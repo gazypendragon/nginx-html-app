@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    imagename = "gazypendragon/nginx-html-app"
+    imagename = "ndefrutitus/nginx-html-app"
     registryCredential = 'dockerhub-id'
     dockerImage = ''
   }
