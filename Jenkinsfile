@@ -1,14 +1,14 @@
- pipeline {
+pipeline {
   environment {
-    imagename = "ndefrutitus/nginx-html-app"
+    imagename = "prayags/nginx-html-app"
     registryCredential = 'dockerhub-id'
     dockerImage = ''
   }
   agent any
   stages {
     stage('Cloning Git') {
-     steps {
-        git([url: 'https://github.com/gazypendragon/nginx-html-app.git', branch: 'main', credentialsId: 'github-id'])
+      steps {
+        git([url: 'git@github.com:prayag-sangode/nginx-html-app.git', branch: 'main', credentialsId: 'github-id'])
 
       }
     }
@@ -46,22 +46,3 @@
   }
  }
 }
-    }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $imagename:$BUILD_NUMBER"
-        sh "docker rmi $imagename:latest"
-
-      }
-    }
-    stage('Deploy HTML App on microk8s') {
-      steps{
-       withKubeConfig([credentialsId: 'microk8s-id', serverUrl: 'https://10.168.0.2:16443']) {
-        sh 'kubectl apply -f deploy.yaml'
-     }
-   }
-  }
- }
-}
-
-
