@@ -89,7 +89,7 @@
     }
     stage('Deploy HTML App on microk8s') {
       steps{
-       withKubeConfig([credentialsId: 'microk8s-id', serverUrl: 'https://10.128.0.7:16443']) {
+       withKubeConfig([credentialsId: 'microk8s-id', serverUrl: 'https://10.168.0.2:16443']) {
         sh 'kubectl apply -f deploy.yaml'
      }
    }
