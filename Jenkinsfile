@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    imagename = "prayags/nginx-html-app"
+    imagename = "gazypendragon/nginx-html-app"
     registryCredential = 'dockerhub-id'
     dockerImage = ''
   }
@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'git@github.com:prayag-sangode/nginx-html-app.git', branch: 'main', credentialsId: 'github-id'])
+        git([url: 'git@github.com:gazypendragon/nginx-html-app.git', branch: 'main', credentialsId: 'github-id'])
 
       }
     }
