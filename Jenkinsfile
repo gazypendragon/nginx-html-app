@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'git@github.com:gazypendragon/nginx-html-app.git', branch: 'main', credentialsId: 'github-id'])
+        git([url: 'https://github.com/gazypendragon/nginx-html-app.git', branch: 'main', credentialsId: 'github-id'])
 
       }
     }
